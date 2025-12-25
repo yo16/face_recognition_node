@@ -1,0 +1,24 @@
+{
+  "name": "face_recognition_node",
+  "version": "1.0.0",
+  "description": "face-api.jsを使って画像から顔を認識する",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n server,client -c auto \"npm -C app-server run dev\" \"npm -C app-client run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yo16/face_recognition_node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yo16/face_recognition_node/issues"
+  },
+  "homepage": "https://github.com/yo16/face_recognition_node#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
