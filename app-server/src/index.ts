@@ -3,6 +3,8 @@ import cors from "cors";
 import multer from "multer";
 import sharp from "sharp";
 
+import { detectFaces } from "./faceDetector";
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -22,6 +24,9 @@ app.post(
     }
 
     const buf = req.file.buffer;
+
+    const faceBoxes = await detectFaces(buf);
+    //console.log({faceBoxes});
     
     const meta = await sharp(buf).metadata();
     const stats = await sharp(buf).stats();
@@ -36,6 +41,8 @@ app.post(
       height: meta.height ?? null,
       format: meta.format ?? null,
       meanRgb: mean.slice(0, 3),
+      faceBoxes: faceBoxes,
+      faceCount: faceBoxes.length,
     });
   }
 );
